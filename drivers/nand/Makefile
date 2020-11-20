@@ -28,7 +28,7 @@ LIB 	:= $(obj)libnand.a
 COBJS 	:= nand.o nand_ids.o nand_ecc.o nand_bbt.o nand_util.o
 
 ifeq ($(BOARD),pisces)
-COBJS += nand_base_jz4770.o
+COBJS += nand_base.o
 else
 ifeq ($(BOARD),f4770)
 COBJS += nand_base_jz4770.o

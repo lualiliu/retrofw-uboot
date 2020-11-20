@@ -35,7 +35,7 @@
 #define CONFIG_DDR2_DIFFERENTIAL	1	/* differential DQS */
 
 #ifdef CONFIG_MSC_U_BOOT
-//#define CONFIG_MSC_TYPE_SD
+#define CONFIG_MSC_TYPE_SD
 #endif
 
 //#define CONFIG_SDRAM_MDDR
@@ -46,8 +46,10 @@
 #elif defined CONFIG_SDRAM_DDR1
 #include "asm/jz_mem_nand_configs/DDR1_H5DU516ETR-E3C.h"
 #elif defined CONFIG_SDRAM_DDR2
-#include "asm/jz_mem_nand_configs/DDR2_V59C1G02168QB-3.h"
+//#include "asm/jz_mem_nand_configs/DDR2_V59C1G02168QB-3.h"
 //#include "asm/jz_mem_nand_configs/DDR2_H5PS1G63EFR-Y5C.h"
+#include "asm/jz_mem_nand_configs/DDR2_MT47H128M16RT-25E.h"
+//#include "asm/jz_mem_nand_configs/DDR2_W972GG6KB-25I.h"
 #elif defined CONFIG_MOBILE_SDRAM
 #include "asm/jz_mem_nand_configs/MSDRAM_H55S5122DFR.h"
 #else
@@ -91,9 +93,9 @@
 #if defined(CONFIG_SDRAM_MDDR)
 #define CONFIG_BOOTARGS		"mem=64M console=ttyS2,57600n8 ip=off root=/dev/mtdblock2 rw"
 #else
-#define CONFIG_BOOTARGS		"mem=256M console=ttyS2,57600n8 ubi.mtd=2 root=ubi0:ubifs rootfstype=ubifs rw"
+#define CONFIG_BOOTARGS		"mem=512M console=ttyS1,57600n8 ip=off rootfstype=ext3 root=/dev/mmcblk0p1 ro panic=5" 
 #endif
-#define CONFIG_BOOTCOMMAND	"nand read 0x80600000 0x400000 0x300000;bootm"
+#define CONFIG_BOOTCOMMAND	"msc  read 0x80600000 0x400000 0x300000;bootm"
 #define CFG_AUTOLOAD		"n"		/* No autoload */
 
 #define CONFIG_NET_MULTI

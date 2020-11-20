@@ -316,7 +316,7 @@ $(U_BOOT_SPI):	$(SPI_SPL) $(obj)u-boot.bin
 $(MBR_UBOOT):  $(U_BOOT_MSC) $(MBR)
 		cat $(MBR) $(U_BOOT_MSC) > $@
 $(MBR):
-		mkdir -p $(obj)/tools/mbr/
+		mkdir -p $(obj)tools/mbr/
 		gcc -I$(obj)include -I$(obj)include2 -I$(src)include  $(src)tools/mbr/mkmbr.c -o $(obj)tools/mbr/mkmbr;\
 		rm -rf $@;\
 		$(obj)tools/mbr/mkmbr $@
@@ -2962,7 +2962,7 @@ RetroFW_G2A_defconfig:   unconfig
 	@echo "CONFIG_JZ_RECOVERY = y" >> $(obj)include/config.mk
 	@echo "CONFIG_MBR_UBOOT = y" >> $(obj)include/config.mk
 
-RetroFW_G2B_defconfig:
+RetroFW_G2B_defconfig:		unconfig
 	@echo "#define CONFIG_MSC_U_BOOT" > $(obj)include/config.h
 	@echo "#define CONFIG_JZ_RECOVERY">> $(obj)include/config.h
 	@echo "#define CONFIG_SDRAM_DDR2" >> $(obj)include/config.h
@@ -2980,6 +2980,22 @@ RetroFW_G2B_defconfig:
 	@echo "CONFIG_JZ_RECOVERY = y" >> $(obj)include/config.mk
 	@echo "CONFIG_MBR_UBOOT = y" >> $(obj)include/config.mk
 
+RetroFW_R28_defconfig	:	
+	@echo "#define CONFIG_MSC_U_BOOT" > $(obj)include/config.h
+	@echo "#define CONFIG_SDRAM_DDR2" >> $(obj)include/config.h
+	@echo "#define CONFIG_LCD" >> $(obj)include/config.h
+	@echo "#define CONFIG_JZ4760_LCD_RG_IPS" >> $(obj)include/config.h
+	@echo "Compile MSC boot image for a RetroFW screen (RG280M/V) with a JZ4770 processor"
+	@./mkconfig -a pisces mips mips pisces
+	@echo "TEXT_BASE = 0x80100200" > $(obj)board/pisces/config.tmp
+	@echo "CONFIG_MSC_U_BOOT = y" >> $(obj)include/config.mk
+	@echo "CONFIG_CPU_TYPE = 4770" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_MDDR = n" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_DDR1 = n" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_DDR2 = y" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_SDRAM = n" >> $(obj)include/config.mk
+	@echo "CONFIG_MBR_UBOOT = y" >> $(obj)include/config.mk
+	
 cetus_nand_config	:	unconfig
 	@echo "#define CONFIG_NAND_U_BOOT" > $(obj)include/config.h
 	@echo "Compile NAND boot image for cetus"

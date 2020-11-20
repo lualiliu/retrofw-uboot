@@ -443,9 +443,14 @@ void spl_boot(void)
 
 #ifndef CONFIG_FPGA
 	pll_init();
+	
+	serial_puts("pll init\n");	//luali's debug
 #endif
+	
 	sdram_init();
-
+	
+	serial_puts("SDRAM init\n");	//luali's debug
+	
 	/*
 	 * Load U-Boot image from NAND into RAM
 	 */
