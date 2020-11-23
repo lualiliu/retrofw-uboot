@@ -15,19 +15,19 @@
 /*
  * DDR2 controller timing1 register, unit: ps
  */
-#define DDR_tRAS	45000	/* ACTIVE to PRECHARGE command period to the same bank. */
-#define DDR_tRTP	8000	/* READ to PRECHARGE command period. */
-#define DDR_tRP		15000	/* PRECHARGE command period to the same bank */
-#define DDR_tRCD	15000	/* ACTIVE to READ or WRITE command period to the same bank. */
-#define DDR_tRC		60000	/* ACTIVE to ACTIVE command period to the same bank.*/
-#define DDR_tRRD	10000	/* ACTIVE bank A to ACTIVE bank B command period. */
-#define DDR_tWR		15000	/* WRITE Recovery Time defined by register MR of DDR2 memory */
-#define DDR_tWTR	8000	/* WRITE to READ command delay. */
+#define DDR_tRAS	45	/* ACTIVE to PRECHARGE command period to the same bank. */
+#define DDR_tRTP	8	/* READ to PRECHARGE command period. */
+#define DDR_tRP		15	/* PRECHARGE command period to the same bank */
+#define DDR_tRCD	15	/* ACTIVE to READ or WRITE command period to the same bank. */
+#define DDR_tRC		60	/* ACTIVE to ACTIVE command period to the same bank.*/
+#define DDR_tRRD	10	/* ACTIVE bank A to ACTIVE bank B command period. */
+#define DDR_tWR		15	/* WRITE Recovery Time defined by register MR of DDR2 memory */
+#define DDR_tWTR	8	/* WRITE to READ command delay. */
 
 /*
  * DDR2 controller timing2 register
  */
-#define DDR_tRFC	128000	/* ps,  AUTO-REFRESH command period. */
+#define DDR_tRFC	128	/* ps,  AUTO-REFRESH command period. */
 #define DDR_tMINSR	140	/* tCK, Minimum Self-Refresh / Deep-Power-Down */
 #define DDR_tXP		2	/* tCK, EXIT-POWER-DOWN to next valid command period: 1 to 8 tCK. */
 #define DDR_tMRD	2	/* tCK, Load-Mode-Register to next valid command period: 1 to 4 tCK */
